@@ -1,0 +1,15 @@
+# Copyright (C) 2014 Gilad Ben-Yossef <gilad@benyossef.com>
+# 
+# Derived from Capstanfile example Copyright (C) 2014 Cloudius Systems, Ltd.
+#
+# This work is open source software, licensed under the terms of the
+# BSD license as described in the LICENSE file in the top-level directory.
+
+base: cloudius/osv
+
+cmdline: lua.so
+
+build: make osv
+
+files:
+  lua.so: src/lua.so
