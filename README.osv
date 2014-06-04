@@ -1,0 +1,25 @@
+
+What is this?
+~~~~~~~~~~~~~
+
+A port of lua to OSv.
+
+1. What is OSv?
+http://osv.io
+
+2. What is Lua?
+http://www.lua.org
+
+How it is supposed to work:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Running lua in OSv:
+
+$ capstan build osv-lua
+$ capstan run osv-lua
+
+Status
+~~~~~~
+
+It doesn't work yet.
+Lua fails on invocation.
