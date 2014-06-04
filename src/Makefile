@@ -26,7 +26,7 @@ MYOBJS=
 
 # == END OF USER SETTINGS -- NO NEED TO CHANGE ANYTHING BELOW THIS LINE =======
 
-PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
+PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris osv
 
 LUA_A=	liblua.a
 CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o \
@@ -101,6 +101,10 @@ freebsd:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -lreadline"
 
 generic: $(ALL)
+
+osv:
+	$(MAKE) LUA_T=lua.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_POSIX" lua.so 
+	$(MAKE) LUA_T=luac.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_POSIX" luac.so
 
 linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
