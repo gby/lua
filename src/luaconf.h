@@ -49,6 +49,16 @@
 #define LUA_USE_LONGLONG	/* assume support for long long */
 #endif
 
+#if defined(LUA_USE_OSV)
+#define LUA_USE_MKSTEMP
+#define LUA_USE_POPEN
+#define LUA_USE_GMTIME_R
+#define LUA_USE_STRTODHEX       /* assume 'strtod' handles hex formats */
+#define LUA_USE_AFORMAT         /* assume 'printf' handles 'aA' specifiers */
+#define LUA_USE_LONGLONG        /* assume support for long long */
+#endif
+
+
 #if defined(LUA_USE_MACOSX)
 #define LUA_USE_POSIX
 #define LUA_USE_DLOPEN		/* does not need -ldl */

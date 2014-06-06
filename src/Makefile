@@ -103,8 +103,8 @@ freebsd:
 generic: $(ALL)
 
 osv:
-	$(MAKE) LUA_T=lua.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_POSIX" lua.so 
-	$(MAKE) LUA_T=luac.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_POSIX" luac.so
+	$(MAKE) LUA_T=lua.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_OSV" lua.so 
+	$(MAKE) LUA_T=luac.so SYSLDFLAGS=-shared SYSCFLAGS="-fPIC -DLUA_USE_OSV" luac.so
 
 linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
