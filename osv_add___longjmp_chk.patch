@@ -1,0 +1,18 @@
+diff --git a/libc/arch/x64/setjmp/longjmp.s b/libc/arch/x64/setjmp/longjmp.s
+index e175a4b..feae506 100644
+--- a/libc/arch/x64/setjmp/longjmp.s
++++ b/libc/arch/x64/setjmp/longjmp.s
+@@ -1,10 +1,13 @@
+ /* Copyright 2011-2012 Nicholas J. Kain, licensed under standard MIT license */
+ .global _longjmp
+ .global longjmp
++.global __longjmp_chk
+ .type _longjmp,@function
+ .type longjmp,@function
++.type __longjmp_chk,@function
+ _longjmp:
+ longjmp:
++__longjmp_chk:
+ 	mov %rsi,%rax           /* val will be longjmp return */
+ 	test %rax,%rax
+ 	jnz 1f
