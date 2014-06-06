@@ -10,16 +10,49 @@ http://osv.io
 2. What is Lua?
 http://www.lua.org
 
-How it is supposed to work:
+Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Running lua in OSv:
 
-$ capstan build osv-lua
-$ capstan run osv-lua
+$ capstan build gby/osv-lua
+$ capstan run gby/osv-lua
 
-Status
-~~~~~~
+FAQ
+~~~~
 
-It doesn't work yet.
-Lua fails on invocation.
+1. What's gby/empty?
+
+gby/empty is the result of typing "make image=empty" in OSv source directory.
+
+2. Why is it needed? can't I use cloudius/osv-base as base?
+
+I never got lua it to work with cloudius/osv-base, V9.0, so I made my own base image.
+
+One reason is the following OSv patch which is needed if you happen to building in Ubuntu, which I am -
+
+gby@gilad-linux:~/src/osv$ git diff
+diff --git a/libc/arch/x64/setjmp/longjmp.s b/libc/arch/x64/setjmp/longjmp.s
+index e175a4b..feae506 100644
+--- a/libc/arch/x64/setjmp/longjmp.s
++++ b/libc/arch/x64/setjmp/longjmp.s
+@@ -1,10 +1,13 @@
+ /* Copyright 2011-2012 Nicholas J. Kain, licensed under standard MIT license */
+ .global _longjmp
+ .global longjmp
++.global __longjmp_chk
+ .type _longjmp,@function
+ .type longjmp,@function
++.type __longjmp_chk,@function
+ _longjmp:
+ longjmp:
++__longjmp_chk:
+        mov %rsi,%rax           /* val will be longjmp return */
+        test %rax,%rax
+        jnz 1f
+
+Having said that, I suspect cloudius/osv-base, V9.0 is broken regardless as I couldn't get even a simple hello.so to run in it.
+
+gby.
+
+
